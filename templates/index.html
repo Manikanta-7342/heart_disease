@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required><br><br>
+
+        <label for="sex">Sex:</label>
+        <select name="sex" id="sex" required>
+            <option value="F">Female</option>
+            <option value="M">Male</option>
+        </select><br><br>
+
+        <label for="chest_pain">Chest Pain Type:</label>
+        <select name="chest_pain" id="chest_pain" required>
+            <option value="TA">Typical Angina</option>
+            <option value="ATA">Atypical Angina</option>
+            <option value="NAP">Non-anginal Pain</option>
+            <option value="ASY">Asymptomatic</option>
+        </select><br><br>
+
+        <label for="resting_bp">Resting Blood Pressure:</label>
+        <input type="number" name="resting_bp" id="resting_bp" required><br><br>
+
+        <label for="cholesterol">Cholesterol (mg/dL):</label>
+        <input type="number" name="cholesterol" id="cholesterol" required><br><br>
+
+        <label for="fasting_bs">Fasting Blood Sugar &gt; 120 mg/dL:</label>
+        <select name="fasting_bs" id="fasting_bs" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+
+        <label for="resting_ecg">Resting ECG Results:</label>
+        <select name="resting_ecg" id="resting_ecg" required>
+            <option value="Normal">Normal</option>
+            <option value="ST">ST-T Wave Abnormality</option>
+            <option value="LVH">Left Ventricular Hypertrophy</option>
+        </select><br><br>
+
+        <label for="max_hr">Maximum Heart Rate:</label>
+        <input type="number" name="max_hr" id="max_hr" required><br><br>
+
+        <label for="exercise_angina">Exercise-Induced Angina:</label>
+        <select name="exercise_angina" id="exercise_angina" required>
+            <option value="N">No</option>
+            <option value="Y">Yes</option>
+        </select><br><br>
+
+        <label for="oldpeak">ST Depression Induced by Exercise:</label>
+        <input type="number" name="oldpeak" id="oldpeak" step="0.1" required><br><br>
+
+        <label for="st_slope">ST Slope:</label>
+        <select name="st_slope" id="st_slope" required>
+            <option value="Up">Upsloping</option>
+            <option value="Flat">Flat</option>
+            <option value="Down">Downsloping</option>
+        </select><br><br>
+
+
+
+        <input type="submit" value="Predict">
+    </form>
+
+</body>
+</html>

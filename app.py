@@ -1,8 +1,5 @@
 from flask import Flask,request,render_template
-import numpy as np
-import pandas as pd
 
-from sklearn.preprocessing import StandardScaler
 from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
 application=Flask(__name__) # Entry point to all
@@ -10,35 +7,38 @@ application=Flask(__name__) # Entry point to all
 app=application
 
 ## Route for a home page
-
 @app.route('/') # render to index.html to search in templates folder
 def index():
-    return render_template('index.html') # to go to home page
+    return render_template('basic_reactive_page.html') # to go to home page
 
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html')
+        return render_template('index.html')
     else:
         data=CustomData(
-            gender=request.form.get('gender'),
-            race_ethnicity=request.form.get('ethnicity'),
-            parental_level_of_education=request.form.get('parental_level_of_education'),
-            lunch=request.form.get('lunch'),
-            test_preparation_course=request.form.get('test_preparation_course'),
-            reading_score=float(request.form.get('writing_score')),
-            writing_score=float(request.form.get('reading_score'))
-
+            age=int(request.form.get('age')),
+            sex=request.form.get('sex'),
+            chest_pain=request.form.get('chest_pain'),
+            resting_bp=int(request.form.get('resting_bp')),
+            cholesterol=float(request.form.get('cholesterol')),
+            fasting_bs=request.form.get('fasting_bs'),
+            max_hr=float(request.form.get('max_hr')),
+            resting_ecg=request.form.get('resting_ecg'),
+            st_slope=request.form.get('st_slope'),
+            oldpeak=float(request.form.get('oldpeak')),
+            exercise_angina=request.form.get('exercise_angina')
         )
         pred_df=data.get_data_as_data_frame()
-        print(pred_df)
+        pred_df.to_csv("sample.csv")
         print("Before Prediction")
 
         predict_pipeline=PredictPipeline()
         print("Mid Prediction")
-        results=predict_pipeline.predict(pred_df)
+        results=predict_pipeline.predict()
         print("after Prediction")
-        return render_template('home.html',results=results[0])
+        st = "Heart-Failure" if results[0]==1 else "No Heart-Disease"
+        return render_template('home.html',results=st)
 
 
 if __name__=="__main__":

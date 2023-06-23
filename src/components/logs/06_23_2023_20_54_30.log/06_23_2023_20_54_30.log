@@ -1,0 +1,12 @@
+[ 2023-06-23 20:54:31,231 ] 25 root - INFO - Entered the data ingestion method or component
+[ 2023-06-23 20:54:31,233 ] 28 root - INFO - Read the dataset as dataframe
+[ 2023-06-23 20:54:31,236 ] 34 root - INFO - Train test split initiated
+[ 2023-06-23 20:54:31,239 ] 41 root - INFO - Ingestion of the data is completed
+[ 2023-06-23 20:54:31,257 ] 82 root - INFO - Read train and test data completed
+[ 2023-06-23 20:54:31,257 ] 84 root - INFO - Obtaining preprocessing object
+[ 2023-06-23 20:54:31,257 ] 58 root - INFO - Categorical columns: ['ChestPainType', 'RestingECG', 'ST_Slope', 'Sex', 'FastingBS', 'ExerciseAngina']
+[ 2023-06-23 20:54:31,257 ] 59 root - INFO - Numerical columns: ['Age', 'RestingBP', 'Cholesterol', 'MaxHR', 'Oldpeak']
+[ 2023-06-23 20:54:31,258 ] 97 root - INFO - Applying preprocessing object on training dataframe and testing dataframe.
+[ 2023-06-23 20:54:31,267 ] 109 root - INFO - Saved preprocessing object.
+[ 2023-06-23 20:54:31,268 ] 31 root - INFO - Split training and test input data
+[ 2023-06-23 20:55:03,600 ] 94 root - INFO - Best found model on both training and testing dataset which is Random Forest of 0.8858695652173914 accuracy
